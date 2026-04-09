@@ -1,11 +1,9 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
-const qrcode = require('qrcode-terminal');
+const { Client, LocalAuth } = require('whatsapp-web.js');
 
-// Inicializa o cliente com configurações para evitar travamento
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
-        headless: true,
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
@@ -13,9 +11,9 @@ const client = new Client({
             '--disable-accelerated-2d-canvas',
             '--no-first-run',
             '--no-zygote',
-            '--single-process', 
             '--disable-gpu'
-        ]
+        ],
+        headless: true // Garante que rode sem abrir janela
     }
 });
 
